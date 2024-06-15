@@ -1,0 +1,13 @@
+/* custom.css */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Darker background color */
+    filter: invert(1);
+    /* Change icon color to black */
+}
+
+.carousel-indicators [data-bs-target] {
+    background-color: black;
+    /* Change the color of the indicators to black */
+}

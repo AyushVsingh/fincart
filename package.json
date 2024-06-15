@@ -16,6 +16,7 @@
     "font-awesome": "^4.7.0",
     "mdb-react-ui-kit": "^8.0.0",
     "react": "^18.3.1",
+    "react-bootstrap": "^2.10.2",
     "react-dom": "^18.3.1",
     "react-fast-marquee": "^1.6.4",
     "react-loading-skeleton": "^3.4.0",

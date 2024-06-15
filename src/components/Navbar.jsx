@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faHome, faBox, faInfoCircle, faEnvelope, faUser, faShoppingCart, faSearch } from '@fortawesome/free-solid-svg-icons';
-import logo from './images/logo.PNG';
+
 
 const Navbar = () => {
     const state = useSelector(state => state.handleCart);
@@ -31,7 +31,7 @@ const Navbar = () => {
                 </div>
 
                 <NavLink className="navbar-brand fw-bold fs-4 px-2 text-light" to="/">
-                    <img src={logo} alt="Logo" style={{ width: 70, height: 40, marginLeft: 10 }} />
+                    <img src={"./assets/logo.PNG"} alt="Logo" style={{ width: 70, height: 40, marginLeft: 10 }} />
                 </NavLink>
 
                 <form className="d-flex mx-auto" style={{ flexGrow: 1, justifyContent: 'center', maxWidth: '400px' }}>
