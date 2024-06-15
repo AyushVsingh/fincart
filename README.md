@@ -11,7 +11,7 @@ A Ecommerce Website made with React.js Framework.
 
 ## Screenshots
 
-![App Screenshot](https://i.ibb.co/fQ293tm/image.png)
+![App Screenshot](https://i.ibb.co/Pw4W4x9/fincart1.png)
 
 
 
