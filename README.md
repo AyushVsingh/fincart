@@ -1,15 +1,11 @@
-# E-Commerce Website
+# Fincart
 
 A Ecommerce Website made with React.js Framework.
 
 
-## Demo
-
-https://reactjs-ecommerce-app.vercel.app/
-
 ## Features
 
-- Easy to integrate with Backend
+- Integrated with Backend
 - Fully Responsive
 
 
@@ -24,13 +20,13 @@ https://reactjs-ecommerce-app.vercel.app/
 Clone the project
 
 ```bash
-  git clone https://github.com/ssahibsingh/React_E-Commerce
+  git clone https://github.com/AyushVsingh/fincart
 ```
 
 Go to the project directory
 
 ```bash
-  cd React_E-Commerce
+  cd fincart
 ```
 
 Install dependencies
@@ -59,9 +55,5 @@ Start the server
 Contributions are always welcome!
 Just raise an issue, we will discuss it.
 
-
-## Feedback
-
-If you have any feedback, please reach out to me [here](https://ssahibsingh.github.io/#contact)
 
 
