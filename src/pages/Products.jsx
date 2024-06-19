@@ -4,7 +4,7 @@ import { Footer, Navbar, Product } from "../components"
 const Products = () => {
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
       <Product />
       <Footer />
     </>

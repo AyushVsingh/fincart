@@ -249,7 +249,7 @@ const Checkout = () => {
                           Credit card number
                         </label>
                         <input
-                          type="text"
+                          type="number"
                           className="form-control"
                           id="cc-number"
                           placeholder=""
@@ -265,7 +265,7 @@ const Checkout = () => {
                           Expiration
                         </label>
                         <input
-                          type="text"
+                          type="date"
                           className="form-control"
                           id="cc-expiration"
                           placeholder=""
@@ -281,7 +281,7 @@ const Checkout = () => {
                           CVV
                         </label>
                         <input
-                          type="text"
+                          type="number"
                           className="form-control"
                           id="cc-cvv"
                           placeholder=""

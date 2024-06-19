@@ -1,13 +1,33 @@
-/* custom.css */
-.carousel-control-prev-icon,
-.carousel-control-next-icon {
-    background-color: rgba(0, 0, 0, 0.5);
-    /* Darker background color */
-    filter: invert(1);
-    /* Change icon color to black */
+.navbar .search-container {
+    position: relative;
+    width: 100%;
 }
 
-.carousel-indicators [data-bs-target] {
-    background-color: black;
-    /* Change the color of the indicators to black */
+.navbar .form-control {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.navbar .suggestion-list {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    z-index: 1000;
+    max-height: 200px;
+    /* Adjust as needed */
+    overflow-y: auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ddd;
+    border-radius: 0 0 5px 5px;
+}
+
+.navbar .suggestion-list .list-group-item {
+    cursor: pointer;
+}
+
+.navbar .suggestion-list .list-group-item:hover {
+    background: #f0f0f0;
 }

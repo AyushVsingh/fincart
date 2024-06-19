@@ -12,7 +12,7 @@ const Home = () => {
             className="d-block w-100"
             src="./assets/Image3.jpg"
             alt="First slide"
-            height={500}
+            height={250}
           />
         </Carousel.Item>
         <Carousel.Item>
@@ -20,7 +20,7 @@ const Home = () => {
             className="d-block w-100"
             src="./assets/Image2.jpg"
             alt="Second slide"
-            height={500}
+            height={250}
           />
         </Carousel.Item>
         <Carousel.Item>
@@ -28,7 +28,7 @@ const Home = () => {
             className="d-block w-100"
             src="./assets/girl.jpg"
             alt="Third slide"
-            height={500}
+            height={250}
           />
         </Carousel.Item>
       </Carousel>

@@ -40,7 +40,7 @@ const Register = () => {
     }
     return (
         <>
-            <Navbar />
+            {/* <Navbar /> */}
             <ToastContainer />
             <div className="container my-3 py-3">
                 <h1 className="text-center">Register</h1>
@@ -49,7 +49,7 @@ const Register = () => {
                     <div className="col-md-4 col-lg-4 col-sm-8 mx-auto">
                         <form onSubmit={handleSubmit}>
                             <div class="form my-3">
-                                <label htmlFor="firstName">firstName</label>
+                                <label htmlFor="firstName">Firstname</label>
                                 <input
                                     type="text"
                                     class="form-control"
@@ -57,10 +57,11 @@ const Register = () => {
                                     value={firstName}
                                     onChange={(e) => setFirstname(e.target.value)}
                                     placeholder="Enter Your First Name"
+                                    required
                                 />
                             </div>
                             <div class="form my-3">
-                                <label htmlFor="lastName">lastName</label>
+                                <label htmlFor="lastName">Lastname</label>
                                 <input
                                     type="text"
                                     class="form-control"
@@ -68,10 +69,11 @@ const Register = () => {
                                     value={lastName}
                                     onChange={(e) => setLastname(e.target.value)}
                                     placeholder="Enter your Last Name"
+                                    required
                                 />
                             </div>
                             <div class="form my-3">
-                                <label htmlFor="username">username</label>
+                                <label htmlFor="username">Username</label>
                                 <input
                                     type="text"
                                     class="form-control"
@@ -79,10 +81,11 @@ const Register = () => {
                                     value={username}
                                     onChange={(e) => setUsername(e.target.value)}
                                     placeholder="Enter Username"
+                                    required
                                 />
                             </div>
                             <div class="form my-3">
-                                <label htmlFor="email">email</label>
+                                <label htmlFor="email">Email</label>
                                 <input
                                     type="email"
                                     class="form-control"
@@ -90,10 +93,11 @@ const Register = () => {
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
                                     placeholder="name@example.com"
+                                    required
                                 />
                             </div>
                             <div class="form  my-3">
-                                <label for="password">password</label>
+                                <label for="password">Password</label>
                                 <input
                                     type="password"
                                     class="form-control"
@@ -101,10 +105,11 @@ const Register = () => {
                                     value={password}
                                     onChange={(e) => setPassword(e.target.value)}
                                     placeholder="Password"
+                                    required
                                 />
                             </div>
                             <div class="form my-3">
-                                <label for="userRole">userRole</label>
+                                <label for="userRole">UserRole</label>
                                 <input
                                     type="text"
                                     class="form-control"
@@ -112,6 +117,7 @@ const Register = () => {
                                     value={userRole}
                                     onChange={(e) => setUserRole(e.target.value)}
                                     placeholder="userRole"
+                                    required
                                 />
                             </div>
                             <div className="my-3">
