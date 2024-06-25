@@ -5,11 +5,13 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import store from './redux/store';
 
 import Navbar from '../src/components/Navbar';
 
-import { Home, Product, Products, AboutPage, ContactPage, Cart, Login, Register, Checkout, PageNotFound, Profile } from "./pages"
+import { Home, Product, Products, AboutPage, ContactPage, Cart, Login, Register, Checkout, PageNotFound, Profile, OrderHistory } from "./pages"
 
 const products = [
   { id: 1, title: 'Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops men' },
@@ -31,9 +33,7 @@ const products = [
   { id: 17, title: 'Rain Jacket Women Windbreaker Striped Climbing Raincoats' },
   { id: 18, title: 'MBJ Women Solid Short Sleeve Boat Neck V' },
   { id: 19, title: 'Opna Women Short Sleeve Moisture' },
-  { id: 20, title: 'DANVOUY Womens T Shirt Casual Cotton Short' },
-
-  // Add more products as needed
+  { id: 20, title: 'DANVOUY Womens T Shirt Casual Cotton Short' }
 ];
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -42,6 +42,7 @@ root.render(
 
     <Provider store={store}>
       <Navbar products={products} />
+      <ToastContainer />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/product" element={<Products />} />
@@ -55,6 +56,7 @@ root.render(
         <Route path="*" element={<PageNotFound />} />
         <Route path="/product/*" element={<PageNotFound />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/order-history" element={<OrderHistory />} />
       </Routes>
     </Provider>
   </BrowserRouter>

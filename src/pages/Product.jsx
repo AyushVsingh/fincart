@@ -4,8 +4,10 @@ import { Link, useParams } from "react-router-dom";
 import Marquee from "react-fast-marquee";
 import { useDispatch } from "react-redux";
 import { addCart } from "../redux/action";
-import { Footer, Navbar } from "../components";
-import "./Product.css";  // Import your CSS file
+import { Footer } from "../components";
+import { toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+import "./Product.css";
 
 const Product = () => {
   const { id } = useParams();
@@ -16,7 +18,13 @@ const Product = () => {
   const dispatch = useDispatch();
 
   const addProduct = (product) => {
-    dispatch(addCart(product));
+    const token = localStorage.getItem("token");
+    if (token) {
+      dispatch(addCart(product));
+      toast.success("Item added to cart");
+    } else {
+      toast.error("Please login to add items to cart");
+    }
   };
 
   useEffect(() => {
@@ -140,7 +148,6 @@ const Product = () => {
 
   return (
     <>
-      {/* <Navbar /> */}
       <div className="container">
         <div className="row">
           {loading ? <Loading /> : <ShowProduct />}

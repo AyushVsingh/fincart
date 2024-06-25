@@ -1,16 +1,11 @@
-/* Custom CSS for Product Component */
 .product-description {
     max-height: 150px;
-    /* Limit the height of the description */
     overflow: hidden;
-    /* Hide overflow text */
     text-overflow: ellipsis;
-    /* Ellipsis for overflow text */
 }
 
 @media (max-width: 768px) {
     .product-description {
         max-height: 100px;
-        /* Reduce height on smaller screens */
     }
 }

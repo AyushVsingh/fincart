@@ -33,12 +33,16 @@ const Login = () => {
         localStorage.setItem("token", data.token);
         // Display success toast
         toast.success("Login successful!");
+
         setTimeout(
           function () {
+
             navigate("/");
+            window.location.reload();
           },
-          4000
+          500
         );
+
         // Navigate to the dashboard
         // navigate("/");
       } else {

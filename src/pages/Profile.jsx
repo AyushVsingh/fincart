@@ -2,9 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Container, Row, Col, Card } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faEnvelope } from '@fortawesome/free-solid-svg-icons';
-import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap CSS
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Profile = () => {
     const [userData, setUserData] = useState(null);
@@ -23,7 +22,6 @@ const Profile = () => {
 
     return (
         <>
-            {/* <Navbar /> */}
             <div className=" py-5">
                 <Container>
                     <Row className="justify-content-center">

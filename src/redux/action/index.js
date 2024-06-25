@@ -1,15 +1,29 @@
-// For Add Item to Cart
-export const addCart = (product) =>{
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+export const addCart = (product) => {
+    return (dispatch) => {
+        const token = localStorage.getItem("token");
+        if (token) {
+            dispatch({
+                type: "ADDITEM",
+                payload: product
+            });
+        } else {
+            toast.error("Please login to add items to cart");
+        }
+    };
+}
+
+export const delCart = (product) => {
     return {
-        type:"ADDITEM",
-        payload:product
+        type: "DELITEM",
+        payload: product
     }
 }
 
-// For Delete Item to Cart
-export const delCart = (product) =>{
+export const clearCart = () => {
     return {
-        type:"DELITEM",
-        payload:product
+        type: "CLEARCART"
     }
 }

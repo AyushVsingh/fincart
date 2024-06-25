@@ -1,0 +1,47 @@
+.order-history {
+    background-color: #f8f9fa;
+}
+
+.order-section {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.product-image {
+    height: 200px;
+    object-fit: cover;
+}
+
+.product-title {
+    font-size: 1.25rem;
+    margin-bottom: 10px;
+}
+
+.product-category {
+    font-size: 0.875rem;
+}
+
+.product-price {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.order-history-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.order-history-content {
+    flex-grow: 1;
+}
+
+.order-history-empty {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 1.2rem;
+    color: #666;
+}

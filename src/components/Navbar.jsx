@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { NavLink, Link, useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate, Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faHome, faBox, faInfoCircle, faEnvelope, faUser, faShoppingCart, faSearch } from '@fortawesome/free-solid-svg-icons';
@@ -44,6 +44,7 @@ const Navbar = ({ products }) => {
     const Logout = () => {
         localStorage.clear();
         navigate("/login");
+        window.location.reload();
     }
 
     const handleSearch = (event) => {
@@ -64,6 +65,7 @@ const Navbar = ({ products }) => {
         setSearchResults([]);
         navigate(`/product/${product.id}`);
     };
+
 
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark py-3 sticky-top">
@@ -127,6 +129,8 @@ const Navbar = ({ products }) => {
                             </button>
                             <div className="dropdown-menu dropdown-menu-right">
                                 <NavLink to="/profile" className="dropdown-item"><i className="fa fa-sign-in-alt"></i> Profile</NavLink>
+                                <NavLink to="/order-history" className="dropdown-item"><i className="fa fa-sign-in-alt"></i> Order History</NavLink>
+                                {/* <Link className="dropdown-item" to="/order-history">Order History</Link> */}
                                 <button onClick={Logout} className="dropdown-item"><i className="fa fa-sign-in-alt"></i> Logout</button>
                             </div>
                         </div>
