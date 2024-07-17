@@ -8,13 +8,12 @@ import { Provider } from 'react-redux';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import store from './redux/store';
-
 import Navbar from '../src/components/Navbar';
 
 import { Home, Product, Products, AboutPage, ContactPage, Cart, Login, Register, Checkout, PageNotFound, Profile, OrderHistory } from "./pages"
 
 const products = [
-  { id: 1, title: 'Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops men' },
+  { id: 1, title: 'Foldsack No. 1 Backpack, Fits 15 Laptops men' },
   { id: 2, title: 'Mens Casual Premium Slim Fit T-Shirts' },
   { id: 3, title: 'Mens Cotton Jacket' },
   { id: 4, title: 'Mens Casual Slim Fit' },
@@ -37,6 +36,7 @@ const products = [
 ];
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
 root.render(
   <BrowserRouter>
 

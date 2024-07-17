@@ -10,11 +10,6 @@ const Login = () => {
   const navigate = useNavigate();
   const token = `"${localStorage.getItem("token")}"`;
 
-  // useEffect(() => {
-  //   if (token) {
-  //     navigate("/");
-  //   }
-  // }, []);
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -43,14 +38,10 @@ const Login = () => {
           500
         );
 
-        // Navigate to the dashboard
-        // navigate("/");
       } else {
-        // Display error toast for failed login
         toast.error("Login failed. Please check your username and password.");
       }
     } catch (error) {
-      // Display error toast for network or other errors
       toast.error("An error occurred. Please try again later.");
       console.error("Login error:", error);
     }
@@ -58,7 +49,6 @@ const Login = () => {
 
   return (
     <>
-      {/* <Navbar /> */}
       <ToastContainer />
       <div className="container my-3 py-3">
         <h1 className="text-center">Login</h1>

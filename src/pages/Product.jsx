@@ -5,11 +5,13 @@ import Marquee from "react-fast-marquee";
 import { useDispatch } from "react-redux";
 import { addCart } from "../redux/action";
 import { Footer } from "../components";
-import { toast } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import "./Product.css";
+import useScrollToTop from "../hooks/useScrollToTop";
 
 const Product = () => {
+  useScrollToTop();
   const { id } = useParams();
   const [product, setProduct] = useState({});
   const [similarProducts, setSimilarProducts] = useState([]);
@@ -21,10 +23,14 @@ const Product = () => {
     const token = localStorage.getItem("token");
     if (token) {
       dispatch(addCart(product));
-      toast.success("Item added to cart");
-    } else {
-      toast.error("Please login to add items to cart");
+      // setTimeout(() => {
+      //   toast.success("Item added to cart");
+      // }, 1000);
+
     }
+    // else {
+    //   toast.error("Please login to add items to cart");
+    // }
   };
 
   useEffect(() => {
@@ -32,12 +38,12 @@ const Product = () => {
       setLoading(true);
       setLoading2(true);
       try {
-        const response = await fetch(`https://fakestoreapi.com/products/${id}`);
+        const response = await fetch(`http://localhost:8081/products/${id}`);
         const data = await response.json();
         setProduct(data);
 
         const response2 = await fetch(
-          `https://fakestoreapi.com/products/category/${data.category}`
+          `http://localhost:8081/products/category/${data.category}`
         );
         const data2 = await response2.json();
         setSimilarProducts(data2);
@@ -136,7 +142,7 @@ const Product = () => {
               <Link to={`/product/${item.id}`} className="btn btn-dark m-1">
                 Buy Now
               </Link>
-              <button className="btn btn-dark m-1" onClick={() => addProduct(item)}>
+              <button className="btn btn-dark m-1" onClick={addProduct(item)}>
                 Add to Cart
               </button>
             </div>

@@ -25,7 +25,7 @@ const ContactPage = () => {
         function () {
           navigate("/");
         },
-        4000
+        3000
       );
     } catch (error) {
       toast.error("An error occurred. Please try again later.");
@@ -42,7 +42,7 @@ const ContactPage = () => {
           <div className="col-md-4 col-lg-4 col-sm-8 mx-auto">
             <form onSubmit={handleSubmit}>
               <div class="form my-3">
-                <label for="name">name</label>
+                <label for="name">Name *</label>
                 <input
                   type="text"
                   class="form-control"
@@ -50,10 +50,11 @@ const ContactPage = () => {
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   placeholder="Enter your name"
+                  required
                 />
               </div>
               <div class="form my-3">
-                <label for="email">email</label>
+                <label for="email">Email *</label>
                 <input
                   type="email"
                   class="form-control"
@@ -61,10 +62,11 @@ const ContactPage = () => {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="name@example.com"
+                  required
                 />
               </div>
               <div class="form  my-3">
-                <label for="message">message</label>
+                <label for="message">Message *</label>
                 <textarea
                   rows={5}
                   class="form-control"
@@ -72,6 +74,7 @@ const ContactPage = () => {
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
                   placeholder="Enter your message"
+                  required
                 />
               </div>
               <div className="text-center">

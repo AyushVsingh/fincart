@@ -5,6 +5,8 @@ import { clearCart } from "../redux/action";
 import { Link } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { ClipLoader } from "react-spinners";
+import useProfile from "../hooks/useProfile";
 
 const EmptyCart = () => (
   <div className="container">
@@ -20,6 +22,7 @@ const EmptyCart = () => (
 );
 
 const ShowCheckout = () => {
+  const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -36,6 +39,9 @@ const ShowCheckout = () => {
   });
   const dispatch = useDispatch();
   const state = useSelector((state) => state.handleCart);
+  const token = `"${localStorage.getItem("token")}"`;
+  const profile = useProfile(token);
+  console.log(state);
 
   let subtotal = 0;
   let shipping = 30.0;
@@ -53,7 +59,7 @@ const ShowCheckout = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    setLoading(true);
     try {
       const response = await fetch("http://localhost:8081/api/v1/orders/placeOrder", {
         method: "POST",
@@ -67,38 +73,65 @@ const ShowCheckout = () => {
         toast.success("Order placed!");
         setTimeout(() => {
           toast.info("Confirmation mail sent!");
-        }, 2000);
+        }, 1000);
       } else {
         toast.error("Failed to place order. Please try again.");
-        return; // Exit early if order placement fails
+        return;
       }
     } catch (error) {
       toast.error("An error occurred. Please try again later.");
       console.error("Order placement error:", error);
-      return; // Exit early if there is an error
+      return;
+    } finally {
+      setLoading(false);
     }
-
     try {
-      // Retrieve the current order history
-      const currentOrders = JSON.parse(localStorage.getItem('orderHistory')) || [];
+      // API call to save order history
+      const orderData = state.map(item => ({
+        id: item.id,
+        title: item.title,
+        price: item.price,
+        description: item.description,
+        category: item.category,
+        image: item.image,
+        rating: item.rating,
+        ratingCount: item.ratingCount,
+        qty: item.qty
+      }));
 
-      // Add the current cart to the order history if cart is not empty
-      if (state && state.length > 0) {
-        currentOrders.push(state);
-      } else {
-        console.error("Cart is empty, nothing to store in order history.");
+      const orderPayload = {
+        username: profile.username,
+        orderData: orderData
+      };
+
+      const orderHistoryResponse = await fetch("http://localhost:8081/api/v1/orderhistory/saveOrUpdate", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(orderPayload),
+      });
+
+      if (!orderHistoryResponse.ok) {
+        throw new Error("Failed to save order history.");
       }
 
-      // Save the updated order history back to localStorage
-      localStorage.setItem('orderHistory', JSON.stringify(currentOrders));
+      // Clear local storage after successful backend save
+      localStorage.removeItem('orderHistory');
 
-      // Dispatch clear cart action
+      // Clear Redux cart
       dispatch(clearCart());
-      toast.success("Checkout successful! Your cart has been emptied.");
+      setTimeout(() => {
+        toast.success("Checkout successful! Your cart has been emptied.");
+      }, 1000);
+
     } catch (error) {
       toast.error("An error occurred during checkout. Please try again.");
       console.error("Checkout error:", error);
+    } finally {
+      setLoading(false);
     }
+
   };
 
 
@@ -143,7 +176,7 @@ const ShowCheckout = () => {
                   <div className="row g-3">
                     <div className="col-sm-6 my-1">
                       <label htmlFor="firstName" className="form-label">
-                        First name
+                        First name*
                       </label>
                       <input
                         type="text"
@@ -158,7 +191,7 @@ const ShowCheckout = () => {
 
                     <div className="col-sm-6 my-1">
                       <label htmlFor="lastName" className="form-label">
-                        Last name
+                        Last name*
                       </label>
                       <input
                         type="text"
@@ -173,7 +206,7 @@ const ShowCheckout = () => {
 
                     <div className="col-12 my-1">
                       <label htmlFor="email" className="form-label">
-                        Email
+                        Email*
                       </label>
                       <input
                         type="email"
@@ -189,7 +222,7 @@ const ShowCheckout = () => {
 
                     <div className="col-12 my-1">
                       <label htmlFor="address" className="form-label">
-                        Address
+                        Address*
                       </label>
                       <input
                         type="text"
@@ -220,7 +253,7 @@ const ShowCheckout = () => {
 
                     <div className="col-md-5 my-1">
                       <label htmlFor="country" className="form-label">
-                        Country
+                        Country*
                       </label>
                       <br />
                       <select
@@ -238,7 +271,7 @@ const ShowCheckout = () => {
 
                     <div className="col-md-4 my-1">
                       <label htmlFor="state" className="form-label">
-                        State
+                        State*
                       </label>
                       <br />
                       <select
@@ -284,7 +317,7 @@ const ShowCheckout = () => {
 
                     <div className="col-md-3 my-1">
                       <label htmlFor="zip" className="form-label">
-                        Zip
+                        Zip*
                       </label>
                       <input
                         type="text"
@@ -321,7 +354,7 @@ const ShowCheckout = () => {
                     <div className="row g-3">
                       <div className="col-md-6 my-1">
                         <label htmlFor="ccName" className="form-label">
-                          Name on card
+                          Name on card*
                         </label>
                         <input
                           type="text"
@@ -338,7 +371,7 @@ const ShowCheckout = () => {
 
                       <div className="col-md-6 my-1">
                         <label htmlFor="ccNumber" className="form-label">
-                          Credit card number
+                          Credit card number*
                         </label>
                         <input
                           type="text"
@@ -354,7 +387,7 @@ const ShowCheckout = () => {
 
                       <div className="col-md-3 my-1">
                         <label htmlFor="ccExpiration" className="form-label">
-                          Expiration
+                          Expiration*
                         </label>
                         <input
                           type="date"
@@ -369,7 +402,7 @@ const ShowCheckout = () => {
 
                       <div className="col-md-3 my-1">
                         <label htmlFor="ccCvv" className="form-label">
-                          CVV
+                          CVV*
                         </label>
                         <input
                           type="text"
@@ -386,8 +419,8 @@ const ShowCheckout = () => {
 
                     <hr className="my-4" />
 
-                    <button className="w-100 btn btn-primary" type="submit">
-                      Continue to checkout
+                    <button onClick={handleSubmit} disabled={loading} className="w-25 btn btn-primary" type="submit">
+                      {loading ? <ClipLoader size={20} color={"#ffffff"} /> : 'Continue to Checkout'}
                     </button>
                   </div>
                 </form>

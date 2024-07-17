@@ -24,13 +24,15 @@ const Register = () => {
                 },
                 body: JSON.stringify({ firstName, lastName, username, email, password, userRole })
             });
+            setTimeout(() => {
+                toast.success("Registration successful!");
+            }, 1000)
 
-            toast.success("Registration successful!");
             setTimeout(
                 function () {
                     navigate("/login");
                 },
-                4000
+                2000
             );
         }
         catch (error) {

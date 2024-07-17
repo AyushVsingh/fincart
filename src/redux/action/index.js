@@ -9,9 +9,13 @@ export const addCart = (product) => {
                 type: "ADDITEM",
                 payload: product
             });
-        } else {
-            toast.error("Please login to add items to cart");
         }
+        // else {
+        //     setTimeout(() => {
+        //         toast.error("Please login to add items to cart");
+        //     }, 500)
+
+        // }
     };
 }
 
